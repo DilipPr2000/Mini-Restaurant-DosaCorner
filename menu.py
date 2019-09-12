@@ -1,5 +1,3 @@
-
-
 def MiniDosaCorner():
     print("NAME:DILIP V.PRAJAPATI.\n")
     print(" ")
@@ -7,15 +5,7 @@ def MiniDosaCorner():
     print(" ")
     print("TOPIC: MINI PROJECT(MINIDOSA CORNER)")
     print(" ")
-
-
-
-
-
-
-
-
-
+    
     print("$"*40,"WELCOME TO DP MINIDOSACORNER","$"*40)
     print(" ")
     print("$"*40,"SELECT YOUR FAVOURATE AND YUMMY DOSA.........!!!!!!!!!","$"*40)
@@ -81,7 +71,7 @@ def MiniDosaCorner():
     print("total:",total)
     print("cgst:",cgst)
     print("sgst:",sgst)
-#    print("~"*40,"VISIT AGAIN","~"*40)
+
 
         
 def cashback():
@@ -105,13 +95,6 @@ def cashback():
             print("OOPS!! SORRY YOU DONT HAVE CASHBACK")
     else:
         print("PLEASE TRY AGAIN")
-##    if total>1000:
-##        print("CASHBACK")
-
-
-
-
-
 
 def feedback():
    # print("~"*38)
