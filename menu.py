@@ -1,70 +1,40 @@
 def MiniDosaCorner():
+    Subtotal= 0
+    cgst    = 0
+    sgst    = 0
+    total   = 0
+
     print("NAME:DILIP V.PRAJAPATI.\n")
-    print(" ")
     print("SUBJECT: PYTHON\n")
-    print(" ")
-    print("TOPIC: MINI PROJECT(MINIDOSA CORNER)")
-    print(" ")
+    print("TOPIC: MINI PROJECT(MINIDOSA CORNER)\n\n")
     
-    print("$"*40,"WELCOME TO DP MINIDOSACORNER","$"*40)
-    print(" ")
-    print("$"*40,"SELECT YOUR FAVOURATE AND YUMMY DOSA.........!!!!!!!!!","$"*40)
-    print(" ")
+    print("$*"*7,"WELCOME TO DP MINIDOSA CORNER","$*"*7,end='\n\n')
+    print("-*"*5,"SELECT YOUR FAVOURATE AND YUMMY DOSA !! ","*-"*5,end='\n\n')
 
-    print("1-->SADA DOSA @ Rs.50")
-    print("2-->CHEESE DOSA @ Rs.180")
-    print("3-->SECHEZWAN DOSA @ Rs.150")
-    print("4-->MASALA DOSA @ Rs.90")
-    print("5-->PASTA DOSA @ Rs.120")
-    print("6-->SWEET CORN DOSA @ Rs.190")
-    print("7-->CHEESE MASALA DOSA (BHAJI SEPERATE)@ Rs.200")
-    Subtotal=0
-    cgst=0
-    sgst=0
-    total=0
-    print(" ")
+    menu =  [{"item":"SADA DOSA",          "price": 50},
+             {"item":"CHEESE DOSA",        "price": 180},
+             {"item":"SECHEZWAN DOSA",     "price": 150},
+             {"item":"MASALA DOSA",        "price": 90},
+             {"item":"PASTA DOSA",         "price": 120},
+             {"item":"SWEETCORN DOSA",     "price": 190},
+             {"item":"CHEESE-MASALA DOSA", "price": 200}]
 
-    ch=int(input("enter your choice:"))
-    print(" ")
-    if ch==1:
-        SD=int(input("enter quantity:"))
-        subtotal=SD*50
-        cgst=subtotal*0.05
-        sgst=subtotal*0.05
-    elif ch==2:
-        CD=int(input("enter quantity:"))
-        subtotal=CD*180
-        cgst=subtotal*0.05
-        sgst=subtotal*0.05
-    elif ch==3:
-        SWD=int(input("enter quantity:"))
-        subtotal=SWD*150
-        cgst=subtotal*0.05
-        sgst=subtotal*0.05
-    elif ch==4:
-        MD=int(input("enter quantity:"))
-        subtotal=MD*90
-        cgst=subtotal*0.05
-        sgst=subtotal*0.05
-    elif ch==5:
-        PD=int(input("enter quantity:"))
-        subtotal=PD*120
-        cgst=subtotal*0.05
-        sgst=subtotal*0.05
-    elif ch==6:
-        SCD=int(input("enter quantity:"))
-        subtotal=SCD*190
-        cgst=subtotal*0.05
-        sgst=subtotal*0.05
-    elif ch==7:
-        CMD=int(input("enter quantity:"))
-        subtotal=CMD*200
-        cgst=subtotal*0.05
-        sgst=subtotal*0.05
-    else:
+    for idx in range(len(menu)):
+        print(f"{idx+1}--> {menu[idx]['item']} @ {menu[idx]['price']}")
+
+    choice  = int(input("enter your choice:"))
+    qty     = int(input("enter quantity:"))
+
+    if choice>len(menu) or choice<0:
         print("ENTERED CHOICE NOT AVAILABLE!!! TRY AGAIN")
         MiniDosaCorner()    
-    total=subtotal+cgst+sgst
+    else:
+        subtotal = qty*menu[choice-1]['price']
+
+    cgst  = subtotal*0.05
+    sgst  = subtotal*0.05
+    total = subtotal + cgst + sgst
+
     print()
     print("##"*20,"RECEIPT","##"*20)
     print("subtotal:",subtotal)
@@ -75,7 +45,7 @@ def MiniDosaCorner():
 
         
 def cashback():
-    print("#"*40,"DO YOU WANT CASHBACK OFFER??? IF YES THEN CHOOSE OPTION","#"*40)
+    print("*-"*5,"DO YOU WANT CASHBACK OFFER??? ","*-"*5,end='\n\n')
     print("select your opinion")
     print ("a-->YES THROUGH PAYTM APP")
     print("b-->YES THROUGH PHONEPE APP")
@@ -92,32 +62,37 @@ def cashback():
     elif C=="c":
         print("WOW!!!YOU HAVE ACHIVED A CASHBACK OFFER OF RS.450")
     elif C=="d":
-            print("OOPS!! SORRY YOU DONT HAVE CASHBACK")
+        print("OOPS!! SORRY YOU DONT HAVE CASHBACK")
     else:
         print("PLEASE TRY AGAIN")
+        cashback()
 
 def feedback():
-   # print("~"*38)
+    print('\n\n')
     print("#"*40,"GIVE YOUR FEEDBACK","#"*40)
-    print("select your opinion")
-    print ("a-->execellent service")
-    print("b-->good service")
-    print("c-->can do better")
-    print("d-->bad service")
-    ch=input("ENTER YOUR OPINION:")
-    if ch=="a":
-        print("execellent service")
-    elif ch=="b":
-        print("good service")
-    elif ch=="c":
-        print("can do better")
-    elif ch=="d":
-        print("bad services")
-    else:
+    print("Rate the Service")
+    
+    rating = ["excellent service",
+              "good service",
+              "acceptable service",
+              "can do better",
+              "bad service"]
+
+    for idx in range(len(rating)):
+        print(f"{chr(97+idx)}--> {rating[idx]}")
+
+    ch=ord(input("\nENTER YOUR OPINION:"))
+
+    if ch<97 or ch>102:
         print("PLEASE TRY AGAIN")
+        feedback()
+    else:
+        print("You have Rated: ",rating[ch-97])
 
-    print("~"*40,"THANK YOU VISIT AGAIN.WE HOPE YOU ENJOYED...","~"*40)    
-MiniDosaCorner()    
-cashback()
-feedback()          
+    print("~"*10,"THANK YOU VISIT AGAIN.WE HOPE YOU ENJOYED...","~"*10)    
 
+
+if __name__=="__main__":    
+    MiniDosaCorner()    
+    cashback()
+    feedback()
